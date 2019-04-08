@@ -24,38 +24,53 @@ const btnPlayEl = document.querySelector('.play');
 const Sonidos= [261,329,392,440];
 let SoundsMachine =[];
 var context = new (window.AudioContext || window.webkitAudioContext)();
- 
-function Sonido(event){
+function auxSound(event) {
+    let keyPressed = parseInt(event.currentTarget.id);
+    let keyPressedArray=keyPressed-1;
+    Sonido(keyPressedArray);
+}
+
+function Sonido(number){
      //creamos oscilador
-    let keyPressed = parseInt(event.currentTarget.id)
-     console.log(keyPressed);
+    
+ 
 
     var osc = context.createOscillator();
-    let keyPressedArray=keyPressed-1;
+    
     // admite: sine, square, sawtooth, triangle
     osc.type = 'sawtooth'; 
  
-    osc.frequency.value=Sonidos[keyPressedArray];
+    osc.frequency.value=Sonidos[number];
  
     //asignamos el destino para el sonido
     osc.connect(context.destination);
     //iniciamos la nota
-    // osc.start();
+    osc.start();
     // //detenemos la nota medio segundo despues
-    // osc.stop(context.currentTime + .1);
+    osc.stop(context.currentTime + .1);
  
 }
+function getRandomNumber(max) {
+    return Math.ceil(Math.random() * max);
+  }
 function Secuencia(){
-    
+   let randomNumber =getRandomNumber(4);
+   SoundsMachine.push(randomNumber);
+   for (let i=0;i<SoundsMachine.length;i++){
+//    Sonido(SoundsMachine[1]);
+   console.log(SoundsMachine.length);
+}
+
+   
 
 }
 
 
-console.log(btnPlayEl);
-btnRedEl.addEventListener('click',Sonido);
-btnGreenEl.addEventListener('click',Sonido);
-btnBlueEl.addEventListener('click',Sonido);
-btnYellowEl.addEventListener('click',Sonido);
-btnPlayEl.addEventListener('click',Secuencia)
+
+btnRedEl.addEventListener('click',auxSound);
+btnGreenEl.addEventListener('click',auxSound);
+btnBlueEl.addEventListener('click',auxSound);
+btnYellowEl.addEventListener('click',auxSound);
+btnPlayEl.addEventListener('click',Secuencia);
 
 
