@@ -1,0 +1,19 @@
+.btn{
+    width: 100px;
+    height: 100px;
+    border:2px solid black;
+    border-radius: 5px;
+}
+
+.red{
+    background-color: red;
+}
+.green{
+    background-color:green;
+}
+.blue{
+    background-color:blue;
+}
+.yellow{
+    background-color: yellow;
+}
