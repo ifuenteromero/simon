@@ -114,11 +114,20 @@
 
 //for que enciende de 1 a 4
 
-for (let i=1;i<arrayButtons.length;i++){
-  setTimeout(function(){iluminated(i)},(i-1)*2000);
+// for (let i=1;i<arrayButtons.length;i++){
+//   setTimeout(function(){iluminated(i)},(i-1)*2000);
 
-}
+// }
 
 //rojo,rojo,amarillo,verde
 //1,1,4,2
+
+// const arrayButtons=[0,btnRedEl,btnGreenEl,btnBlueEl,btnYellowEl];
+
+const buttonsSecuence=[1,1,4,2,3,3,1];
+
+for (let i=0;i<buttonsSecuence.length;i++){
+  setTimeout(function(){iluminated(buttonsSecuence[i])},(i-1)*2000);
+
+}
 
