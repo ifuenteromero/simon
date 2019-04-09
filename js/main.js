@@ -36,18 +36,19 @@ const convertToButton=[0,btnRedEl,btnGreenEl,btnBlueEl,btnYellowEl];
 let secuenceMachine =[];
 //Cuando hacemos click en el butón play, añadimos número aleatorio a la secuencia
 
-btnPlayEl.addEventListener('click',addElementSecuence);
+btnPlayEl.addEventListener('click',addElSecuenceMachine);
 
 //Esta función genera números aleatorios enteros entre 1 y el parámetro max
 function getRandomNumber(max) {
        return Math.ceil(Math.random() * max);
   }
 //Esta función además de añadir el número a la secuencia, llama a las funciones de sonido y animación del botón
-  function addElementSecuence(){
+  function addElSecuenceMachine(){
        let randomNumber =getRandomNumber(4);
        secuenceMachine.push(randomNumber);
        animation();
-       
+
+      
             }
 
 //Animación auxiliar para encender botón
@@ -71,10 +72,49 @@ function getRandomNumber(max) {
      function animation(){
      for (let i=0;i<secuenceMachine.length;i++){
       setTimeout(function(){iluminated(secuenceMachine[i])},i*2000);}}
+//Añadimos listeners a los cuatro botones
 
+btnRedEl.addEventListener('click',convertButtonNumber);
+btnGreenEl.addEventListener('click',convertButtonNumber);
+btnBlueEl.addEventListener('click',convertButtonNumber);
+btnYellowEl.addEventListener('click',convertButtonNumber);
 
+let secuenceUser =[];    
 
+function convertButtonNumber(event) {
+      let numberPressed = parseInt(event.currentTarget.id);
+      // console.log(numberPressed);
+      addElSecuenceUser(numberPressed);
       
+      
+  }
+  
+ function addElSecuenceUser(buttonNumber){
+      secuenceUser.push(buttonNumber);
+     check();
+      
+ }
+ function check(){
+   let currentPosition = secuenceUser.length;
+   let currentArrayPosition = currentPosition-1;
+   let a=currentArrayPosition;
+   if (secuenceMachine[a]===secuenceUser[a]){
+    console.log('bien');
+   }
+   else{
+     console.log('mal');
+   }
+  
+ }
+
+ const auxEl = document.querySelector('.aux');
+ const auxTextEl=document.querySelector('.auxtext');
+ auxEl.addEventListener('click',print);
+ function print(){
+  console.log('machine',secuenceMachine);
+  console.log('user', secuenceUser);
+
+ }
 
 // const Sonidos= [261,329,392,440];
 // let SoundsMachine =[];
