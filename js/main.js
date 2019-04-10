@@ -46,6 +46,7 @@ function getRandomNumber(max) {
   function addElSecuenceMachine(){
        let randomNumber =getRandomNumber(4);
        secuenceMachine.push(randomNumber);
+       secuenceUser =[];
        animation();
 
       
@@ -98,19 +99,20 @@ function convertButtonNumber(event) {
    let maxPosition = secuenceMachine.length;
    let maxArrayPosition = maxPosition-1;
    let a=maxArrayPosition;
-  if (userCounter<=maxArrayPosition){
-      if(secuenceMachine[userCounter]===secuenceUser[userCounter]){
+   let currentPosition=secuenceUser.length-1;
+  // if (userCounter<=maxArrayPosition){
+      if(secuenceMachine[currentPosition]===secuenceUser[currentPosition]){
         console.log('bien');
         userCounter=userCounter+1;
       }
       else{
         console.log('mal');
       }
-  } 
-  else{
-    userCounter=0;
-    secuenceUser=[];
-  }  
+  // } 
+  // else{
+  //   userCounter=0;
+    // secuenceUser=[];
+  // }  
   
  
  }
