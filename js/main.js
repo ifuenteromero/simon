@@ -88,23 +88,31 @@ function convertButtonNumber(event) {
       
       
   }
-  
+  let userCounter=0;
  function addElSecuenceUser(buttonNumber){
       secuenceUser.push(buttonNumber);
      check();
       
  }
  function check(){
-   let currentPosition = secuenceUser.length;
-   let currentArrayPosition = currentPosition-1;
-   let a=currentArrayPosition;
-   if (secuenceMachine[a]===secuenceUser[a]){
-    console.log('bien');
-   }
-   else{
-     console.log('mal');
-   }
+   let maxPosition = secuenceMachine.length;
+   let maxArrayPosition = maxPosition-1;
+   let a=maxArrayPosition;
+  if (userCounter<=maxArrayPosition){
+      if(secuenceMachine[userCounter]===secuenceUser[userCounter]){
+        console.log('bien');
+        userCounter=userCounter+1;
+      }
+      else{
+        console.log('mal');
+      }
+  } 
+  else{
+    userCounter=0;
+    secuenceUser=[];
+  }  
   
+ 
  }
 
  const auxEl = document.querySelector('.aux');
@@ -113,6 +121,7 @@ function convertButtonNumber(event) {
  function print(){
   console.log('machine',secuenceMachine);
   console.log('user', secuenceUser);
+  console.log('usercounter',userCounter);
 
  }
 
